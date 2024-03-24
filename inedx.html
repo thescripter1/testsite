@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Eingabe und Speicherung von Werten</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formular</title>
 </head>
 <body>
-  <form action="saveValue.php" method="get">
-    Temperatur: <input type="text" name="temperature"><br><br>
-    Humidity: <input type="text" name="humidity"><br><br>
-    Pressure: <input type="text" name="pressure"><br><br>
-    <input type="submit" value="Speichern">
-  </form>
+    <form id="myForm">
+        <input type="text" id="inputData" name="data">
+        <button type="button" onclick="sendData()">Senden</button>
+    </form>
+
+    <script>
+        function sendData() {
+            var inputData = document.getElementById("inputData").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "process.php?data=" + inputData, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Verarbeitung der Antwort des Servers hier
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </body>
 </html>
