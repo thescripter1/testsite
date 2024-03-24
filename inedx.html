@@ -13,6 +13,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const dataValue = urlParams.get('data');
         console.log(dataValue)
+        fetch('https://api.thingspeak.com/update?api_key=R72P2SGMXIXJ1Z5X&field1='+dataValue)       
     </script>
 </body>
 </html>
