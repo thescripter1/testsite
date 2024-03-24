@@ -1,30 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formular</title>
+    <title>Beispiel</title>
 </head>
 <body>
-    <form id="myForm">
-        <input type="text" id="inputData" name="data">
-        <button type="button" onclick="sendData()">Senden</button>
-    </form>
-
+    <!-- Hier deine HTML-Inhalte -->
+    
     <script>
-        function sendData() {
-            var inputData = document.getElementById("inputData").value;
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "process.php?data=" + inputData, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    // Verarbeitung der Antwort des Servers hier
-                    console.log(xhr.responseText);
-                }
-            };
-            xhr.send();
-        }
+        // JavaScript-Code, um den Wert von "data" aus der URL zu lesen
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataValue = urlParams.get('data');
+        console.log(dataValue)
     </script>
 </body>
 </html>
